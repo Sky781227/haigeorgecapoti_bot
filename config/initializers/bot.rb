@@ -54,7 +54,7 @@ bot.get_updates(fail_silently: true) do |message|
     when /bagauncitat/
       reply.text = External.motivate_the_shit_out_of_george
     else
-      reply.text = "#{message.from.first_name}, have no idea what #{command.inspect} means."
+      reply.text = "#{message.from.first_name}, have no idea what #{command.inspect} means. Try /motivatie /cesafac /bagauncitat "
     end
     logger.info "sending #{reply.text.inspect} to @#{message.from.username}"
     reply.send_with(bot)
