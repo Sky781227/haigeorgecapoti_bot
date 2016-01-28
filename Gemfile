@@ -41,3 +41,6 @@ gem 'puma'
 
 # Telegram related
 gem 'telegram_bot'
+
+# schedule tasks
+gem 'whenever', :require => false
