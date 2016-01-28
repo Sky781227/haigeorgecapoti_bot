@@ -4,6 +4,12 @@ A barebones Rails app, which can easily be deployed to Heroku.
 
 This application support the [Getting Started with Ruby on Heroku](https://devcenter.heroku.com/articles/getting-started-with-ruby) article - check it out.
 
+
+## IMPORTANT - After deploy
+```sh
+POST http://haigeorgecapoti.herokuapp.com/start-bot
+
+```
 ## Running Locally
 
 Make sure you have Ruby installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).

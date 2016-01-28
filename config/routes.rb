@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  post "start-bot" => "welcome#start_bot"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
