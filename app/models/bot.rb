@@ -2,9 +2,7 @@ require 'telegram_bot'
 require 'pp'
 require 'logger'
 
-logger = Logger.new(STDOUT, Logger::DEBUG)
 
-class External
 
 class Bot
   @@logger = Logger.new(STDOUT, Logger::DEBUG)
@@ -64,7 +62,6 @@ class Bot
     quotes << "The only way to do great work is to love what you do. —Steve Jobs"
     quotes << "Change your thoughts and you change your world. —Norman Vincent Peale"
     quotes << "I would rather die of passion than of boredom. —Vincent van Gogh"
-
     quotes << "Fear is a place where you just tell the truth. -Clive Barker"
     quotes << "Wasted youth is better by far the a wise and productive old age. -Meatloaf"
     quotes << "Seek the truth, no matter where it lies. -Metallica"
@@ -89,29 +86,5 @@ class Bot
     quotes << "Parents can only give good advice or put them on the right paths, but the final forming of a person's character lies in their own hands. -Anne Frank"
     quotes << "Thou shalt hold nothing above reason and logic. -The 1st Commandment of Lord Galen"
     quotes.sample
-  end
-end
-
-
-bot = TelegramBot.new(token: '168908536:AAEr3XjROJDtwIlWIPkfCjgwIeNxdYYJVjI')
-logger.debug "starting telegram bot"
-
-bot.get_updates(fail_silently: true) do |message|
-  logger.info "@#{message.from.username}: #{message.text}"
-  command = message.get_command_for(bot)
-
-  message.reply do |reply|
-    case command
-    when /motivatie/
-      reply.text = External.motivate_the_shit_out_of_george
-    when /cesafac/
-      reply.text = External.motivate_the_shit_out_of_george
-    when /bagauncitat/
-      reply.text = External.motivate_the_shit_out_of_george
-    else
-      reply.text = "#{message.from.first_name}, have no idea what #{command.inspect} means. Try /motivatie /cesafac /bagauncitat "
-    end
-    logger.info "sending #{reply.text.inspect} to @#{message.from.username}"
-    reply.send_with(bot)
   end
 end
