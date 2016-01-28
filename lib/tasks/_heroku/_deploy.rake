@@ -21,7 +21,7 @@ namespace :deploy do
 
   task :after_deploy, :env, :branch do |t, args|
     puts "Deployment Complete"
-    Rake::Task['start_bot']
+    %x[rake start_bot]
   end
 
   task :update_code, :env, :branch do |t, args|
