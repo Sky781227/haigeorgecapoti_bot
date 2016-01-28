@@ -2,7 +2,9 @@ require 'telegram_bot'
 require 'pp'
 require 'logger'
 
+logger = Logger.new(STDOUT, Logger::DEBUG)
 
+class External
 
 class Bot
   @@logger = Logger.new(STDOUT, Logger::DEBUG)
