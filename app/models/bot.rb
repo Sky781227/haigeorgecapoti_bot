@@ -20,9 +20,9 @@ class Bot
       message.reply do |reply|
         case command
         when /motivatie/
-          reply.text = @@motivatie.sample
+          reply.text = Bot.motivate_the_shit_out_of_george
         when /cesafac/
-          reply.text = @@cesafac.sample
+          reply.text = Bot.motivate_the_shit_out_of_george
         when /bagauncitat/
           reply.text = Bot.motivate_the_shit_out_of_george
         else
