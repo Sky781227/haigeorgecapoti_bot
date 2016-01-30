@@ -3723,3 +3723,326 @@ Processing by JokesController#index as HTML
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
   Rendered shared/_menu.html.haml (2.1ms)
 Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:36:22 +0200
+Processing by JokesController#index as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authenticate_member!' for #<JokesController:0x007fab1127f330>):
+  activesupport (4.2.3) lib/active_support/callbacks.rb:430:in `block in make_lambda'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:162:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:162:in `block in halting'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:502:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:502:in `each'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  warden (1.2.5) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.5) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.5) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (2.9.1) lib/puma/server.rb:490:in `handle_request'
+  puma (2.9.1) lib/puma/server.rb:361:in `process_client'
+  puma (2.9.1) lib/puma/server.rb:254:in `block in run'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `call'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (91.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+Processing by JokesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (9.0ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 89ms (Views: 56.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started GET "/assets/application.self-0ba3abeff21aaa9506b3bba2512f15084937d10fd64fd46492cd4eee3bfe471b.js?body=1" for 127.0.0.1 at 2016-01-30 20:36:31 +0200
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-01-30 20:36:33 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1iqGxJRJ6LmSB1zyj0opEI9zOmjrq+ZnISY3DjjkSe30VnzZLCjkNMzPYRq7Mfp8szB/6yX5/jTdetJ9bPnN3A=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-30 20:36:33 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.haml within layouts/application (3.1ms)
+  Rendered shared/_menu.html.haml (4.0ms)
+Completed 200 OK in 50ms (Views: 49.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:36:38 +0200
+Processing by JokesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-30 20:36:38 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (16.3ms)
+  Rendered shared/_menu.html.haml (0.6ms)
+Completed 200 OK in 62ms (Views: 59.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-30 20:36:44 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (4.2ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 62ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-30 20:36:49 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OJhE0qSo37InY2Jbuzo4YwbT2ClZ8o65eidVi9vKH5hTTEYg43V2+xG3ftVHOeknRqvtyn4hPrtMjK/G/8ElIQ==", "user"=>{"email"=>"ionce.florin@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "ionce.florin@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2016-01-30 16:07:43.459732"], ["current_sign_in_at", "2016-01-30 18:36:49.138961"], ["sign_in_count", 5], ["updated_at", "2016-01-30 18:36:49.140209"], ["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 118ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:36:49 +0200
+Processing by JokesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (5.2ms)
+  Rendered shared/_menu.html.haml (0.6ms)
+Completed 200 OK in 49ms (Views: 46.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:36:55 +0200
+Processing by JokesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mJoke Load (0.3ms)[0m  SELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (4.0ms)
+  Rendered shared/_menu.html.haml (0.9ms)
+Completed 200 OK in 59ms (Views: 57.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "//api/v1/jokes" for 127.0.0.1 at 2016-01-30 20:43:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::JokesController#index as JSON
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant Api::V1::JokesController::Jokes):
+  app/controllers/api/v1/jokes_controller.rb:4:in `index'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.9ms)
+
+
+Started GET "/api/v1/jokes" for 127.0.0.1 at 2016-01-30 20:43:34 +0200
+Processing by Api::V1::JokesController#index as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant Api::V1::JokesController::Jokes):
+  app/controllers/api/v1/jokes_controller.rb:4:in `index'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.5ms)
+
+
+Started GET "/api/v1/jokes" for 127.0.0.1 at 2016-01-30 20:43:44 +0200
+Processing by Api::V1::JokesController#index as JSON
+  [1m[35mJoke Load (0.6ms)[0m  SELECT "jokes".* FROM "jokes"
+Completed 200 OK in 17ms (Views: 5.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:20 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (12.6ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 26ms (Views: 8.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:25 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[35mJoke Load (0.5ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:26 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (0.8ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:27 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[35mJoke Load (0.3ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:28 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:29 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[35mJoke Load (0.8ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:43 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (0.4ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:45 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[35mJoke Load (0.5ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:52 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (0.4ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 3.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:45:53 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[35mJoke Load (0.4ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:46:40 +0200
+
+SyntaxError (/Users/florinionce/Documents/personal projects/haigeorgecapoti_bot/app/controllers/api/v1/jokes_controller.rb:11: syntax error, unexpected '}', expecting =>
+    render json: {joke}, root: false
+                       ^):
+  app/controllers/api/v1/jokes_controller.rb:11: syntax error, unexpected '}', expecting =>
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (77.1ms)
+
+
+Started GET "/api/v1/jokes/random" for 127.0.0.1 at 2016-01-30 20:46:49 +0200
+Processing by Api::V1::JokesController#random as JSON
+  [1m[36mJoke Load (0.5ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY RANDOM() LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 5.0ms | ActiveRecord: 2.7ms)
