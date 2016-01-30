@@ -1,0 +1,10 @@
+.container
+  .col-md-6
+    = form_for(@joke) do |f|
+      .field.form-group
+        = f.text_field :content, placeholder: 'Content', class: "form-control", required: true
+
+      = f.hidden_field :user_id, value: current_user.id
+
+      .actions
+        = f.submit "Create", class: "btn btn-default"

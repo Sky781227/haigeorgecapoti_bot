@@ -4,7 +4,7 @@
       %ul.nav.navbar-nav
         - if user_signed_in?
           %li
-            = link_to "#" do
+            = link_to root_path do
               Welcome
               = current_user.first_name
         - else user_signed_in?
@@ -17,7 +17,7 @@
         %li
           - if user_signed_in?
             %li
-              = link_to 'Users', "#"
+              = link_to 'Jokes', jokes_path
             %li
               = link_to('Logout', destroy_user_session_path, :method => :delete)
 

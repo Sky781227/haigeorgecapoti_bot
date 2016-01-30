@@ -1674,3 +1674,2052 @@ Processing by WelcomeController#index as HTML
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
   Rendered shared/_menu.html.haml (1.9ms)
 Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateJokes (20160130161537)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (32.1ms)[0m  [1mCREATE TABLE "jokes" ("id" serial primary key, "content" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160130161537"]]
+  [1m[36m (12.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'jokes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'widgets'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-30 19:01:16 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 60ms (ActiveRecord: 10.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-30 19:01:16 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.haml within layouts/application (2130.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (5.4ms)
+Completed 200 OK in 2267ms (Views: 2266.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:19 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:19 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:01:23 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (12.7ms)[0m  SELECT "jokes".* FROM "jokes"
+  Rendered jokes/index.html.haml within layouts/application (19.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.1ms)
+Completed 200 OK in 67ms (Views: 50.4ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:01:44 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  Rendered jokes/index.html.haml within layouts/application (0.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (6.7ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:44 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:01:45 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:01:51 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  Rendered jokes/index.html.haml within layouts/application (5.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (5.2ms)
+Completed 200 OK in 56ms (Views: 54.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:01:52 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  Rendered jokes/index.html.haml within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  Rendered jokes/index.html.haml within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (7.1ms)
+Completed 200 OK in 71ms (Views: 69.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:02:14 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-30 19:02:16 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.haml within layouts/application (5.3ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (7.5ms)
+Completed 200 OK in 65ms (Views: 63.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:02:18 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 52ms (Views: 50.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:03:08 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (5.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 52ms (Views: 50.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:09 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (5.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.2ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/jokes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:03:23 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:04:04 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (4.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.1ms)
+Completed 200 OK in 1815ms (Views: 1813.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:06 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:04:28 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.5ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (7.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.1ms)
+Completed 200 OK in 61ms (Views: 58.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:04:29 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:05:34 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (4.4ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.2ms)
+Completed 200 OK in 60ms (Views: 58.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:05:35 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.8ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  Rendered jokes/index.html.haml within layouts/application (30.5ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (11.7ms)
+Completed 200 OK in 173ms (Views: 161.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:28 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:29 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:29 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:29 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:58:29 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:58:29 +0200
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 19:58:30 +0200
+Processing by JokesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (30.4ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 114ms (Views: 104.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 19:59:09 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ch8bQUcuCWH95x35Gm0aAqxpe59UXVq9na9CzWS+leNQY+Fc/08F7KMvIBEuFslukCo+HJoPQu5h86e+MKMR0g==", "joke"=>{"content"=>"You want to hear a pizza joke? Never mind, it’s pretty cheesy.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mJoke Exists (6.8ms)[0m  [1mSELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'You want to hear a pizza joke? Never mind, it’s pretty cheesy.' LIMIT 1[0m
+  [1m[35mSQL (8.1ms)[0m  INSERT INTO "jokes" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "You want to hear a pizza joke? Never mind, it’s pretty cheesy."], ["user_id", 1], ["created_at", "2016-01-30 17:59:09.694356"], ["updated_at", "2016-01-30 17:59:09.694356"]]
+  [1m[36m (12.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 59ms (ActiveRecord: 27.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:59:09 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.4ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (49.0ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined local variable or method `book' for #<#<Class:0x007fcd9aad7dd8>:0x007fcd9b445c30>):
+    27:                 %td
+    28:                   = truncate joke.content
+    29:                 %td
+    30:                   = book.quantity
+    31:                 %td
+    32:                   = link_to 'Show', show_joke_path(joke) 
+    33:                 %td
+  app/views/jokes/index.html.haml:30:in `block in _app_views_jokes_index_html_haml___451171643548518184_70260536492800'
+  app/views/jokes/index.html.haml:21:in `_app_views_jokes_index_html_haml___451171643548518184_70260536492800'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (94.6ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:59:28 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.6ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (27.2ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 1.1ms)
+
+ActionView::Template::Error (undefined method `show_joke_path' for #<#<Class:0x007fcd9aad7dd8>:0x007fcd9ab45518>):
+    27:                 %td
+    28:                   = truncate joke.content
+    29:                 %td
+    30:                   = link_to 'Show', show_joke_path(joke) 
+    31:                 %td
+    32:                   = link_to 'Edit', edit_joke_path(joke)
+    33:                 %td
+  app/views/jokes/index.html.haml:30:in `block in _app_views_jokes_index_html_haml___451171643548518184_70260520263960'
+  app/views/jokes/index.html.haml:21:in `_app_views_jokes_index_html_haml___451171643548518184_70260520263960'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.5ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (81.3ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (6.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 67ms (Views: 65.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 19:59:40 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (2.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.8ms)
+Completed 200 OK in 52ms (Views: 50.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:06 +0200
+
+
+Started GET "/jokes/1" for 127.0.0.1 at 2016-01-30 20:02:08 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.3ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (2.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.1ms)
+Completed 200 OK in 42ms (Views: 39.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (2.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.6ms)
+Completed 200 OK in 44ms (Views: 42.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:02:40 +0200
+
+
+Started GET "/jokes/1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (2.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:05:23 +0200
+
+
+Started GET "/jokes/1" for 127.0.0.1 at 2016-01-30 20:07:27 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (3.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 73ms (Views: 71.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:07:28 +0200
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:07:41 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJoke Load (0.4ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms)
+
+ActionView::MissingTemplate (Missing template jokes/edit, application/edit with {:locale=>[:en], :formats=>[:html, :xml], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :haml, :jbuilder]}. Searched in:
+  * "/Users/florinionce/Documents/personal projects/haigeorgecapoti_bot/app/views"
+  * "/Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/devise-3.5.5/app/views"
+):
+  actionview (4.2.3) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.3) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.3) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.3) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.3) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  warden (1.2.5) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.5) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.5) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (2.9.1) lib/puma/server.rb:490:in `handle_request'
+  puma (2.9.1) lib/puma/server.rb:361:in `process_client'
+  puma (2.9.1) lib/puma/server.rb:254:in `block in run'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `call'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (80.5ms)
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:07:41 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.4ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+ActionView::MissingTemplate (Missing template jokes/edit, application/edit with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :haml, :jbuilder]}. Searched in:
+  * "/Users/florinionce/Documents/personal projects/haigeorgecapoti_bot/app/views"
+  * "/Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/devise-3.5.5/app/views"
+):
+  actionview (4.2.3) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.3) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.3) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.3) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.3) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  warden (1.2.5) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.5) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.5) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (2.9.1) lib/puma/server.rb:490:in `handle_request'
+  puma (2.9.1) lib/puma/server.rb:361:in `process_client'
+  puma (2.9.1) lib/puma/server.rb:254:in `block in run'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `call'
+  puma (2.9.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (79.3ms)
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:10:00 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/edit.html.haml within layouts/application (2.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/jokes/1" for 127.0.0.1 at 2016-01-30 20:10:15 +0200
+Processing by JokesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"87/1ifTfsEMSjuMLMzZXqkjc5a7bRzaZkDg8ygvK96/Rww+UTL68zkxG3uMHTYTGdJ+gLRUVLspsZNm5X9dzng==", "joke"=>{"content"=>"You want to hear a pizza joke? Never mind, it’s pretty cheesy!"}, "commit"=>"Create", "id"=>"1"}
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `update_parameters' for #<Joke:0x007fcd95173da0>):
+  app/controllers/jokes_controller.rb:33:in `update'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.7ms)
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/edit.html.haml within layouts/application (3.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (10.6ms)
+Completed 200 OK in 88ms (Views: 77.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:11:12 +0200
+
+
+Started PATCH "/jokes/1" for 127.0.0.1 at 2016-01-30 20:11:17 +0200
+Processing by JokesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pMD9Fp38z+0VPd5VvmTf8uKgagmn9V0AFh95ep/wXLuGvAcLJZ3DYEv1472KHwye3uMvimmnRVPqQ5wJy+3Yig==", "joke"=>{"content"=>"You want to hear a pizza joke? Never mind, it’s pretty cheesy!"}, "commit"=>"Edit", "id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.5ms)[0m  SELECT  1 AS one FROM "jokes" WHERE ("jokes"."content" = 'You want to hear a pizza joke? Never mind, it’s pretty cheesy!' AND "jokes"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "jokes" SET "content" = $1, "updated_at" = $2 WHERE "jokes"."id" = $3[0m  [["content", "You want to hear a pizza joke? Never mind, it’s pretty cheesy!"], ["updated_at", "2016-01-30 18:11:17.487689"], ["id", 1]]
+  [1m[35m (6.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 12ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:11:17 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/1" for 127.0.0.1 at 2016-01-30 20:11:22 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (3.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-30 20:12:20 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.haml within layouts/application (3.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 52ms (Views: 51.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:12:23 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (5.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 43ms (Views: 41.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:12:26 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/edit.html.haml within layouts/application (2.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 57ms (Views: 55.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/jokes/1" for 127.0.0.1 at 2016-01-30 20:12:35 +0200
+Processing by JokesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2Z4/cDyUUYVUlUaieDfW5r4yme8G2ct1YvzrmQlH35X74sVthPVdCApde0pMTAWKgnHcbMiL0yaeoA7qXVpbpA==", "joke"=>{"content"=>"Think about all the fucking possibilities. Sometimes it is appropriate to place various typographic elements on the outside of the fucking left margin of text to maintain a strong vertical axis. This practice is referred to as exdenting and is most often used with bullets and quotations. When you sit down to work, external critics aren’t the enemy. It’s you who you must to fight against to do great fucking work. You must overcome yourself. Don’t worry about what other people fucking think. Practice won’t get you anywhere if you mindlessly fucking practice the same thing. Change only occurs when you work deliberately with purpose toward a goal. Use your fucking hands. Never let your guard down by thinking you’re fucking good enough. Don’t get hung up on things that don’t fucking work. Someday is not a fucking day of the week. What’s important is the fucking drive to see a project through no matter what. Nothing of value comes to you without fucking working at it. The graphic designer’s first fucking consideration is always the size and shape of the format, whether for the printed page or for digital display. This design is fucking brilliant. Why are you fucking"}, "commit"=>"Edit", "id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.3ms)[0m  SELECT  1 AS one FROM "jokes" WHERE ("jokes"."content" = 'Think about all the fucking possibilities. Sometimes it is appropriate to place various typographic elements on the outside of the fucking left margin of text to maintain a strong vertical axis. This practice is referred to as exdenting and is most often used with bullets and quotations. When you sit down to work, external critics aren’t the enemy. It’s you who you must to fight against to do great fucking work. You must overcome yourself. Don’t worry about what other people fucking think. Practice won’t get you anywhere if you mindlessly fucking practice the same thing. Change only occurs when you work deliberately with purpose toward a goal. Use your fucking hands. Never let your guard down by thinking you’re fucking good enough. Don’t get hung up on things that don’t fucking work. Someday is not a fucking day of the week. What’s important is the fucking drive to see a project through no matter what. Nothing of value comes to you without fucking working at it. The graphic designer’s first fucking consideration is always the size and shape of the format, whether for the printed page or for digital display. This design is fucking brilliant. Why are you fucking' AND "jokes"."id" != 1) LIMIT 1
+  [1m[36mSQL (6.8ms)[0m  [1mUPDATE "jokes" SET "content" = $1, "updated_at" = $2 WHERE "jokes"."id" = $3[0m  [["content", "Think about all the fucking possibilities. Sometimes it is appropriate to place various typographic elements on the outside of the fucking left margin of text to maintain a strong vertical axis. This practice is referred to as exdenting and is most often used with bullets and quotations. When you sit down to work, external critics aren’t the enemy. It’s you who you must to fight against to do great fucking work. You must overcome yourself. Don’t worry about what other people fucking think. Practice won’t get you anywhere if you mindlessly fucking practice the same thing. Change only occurs when you work deliberately with purpose toward a goal. Use your fucking hands. Never let your guard down by thinking you’re fucking good enough. Don’t get hung up on things that don’t fucking work. Someday is not a fucking day of the week. What’s important is the fucking drive to see a project through no matter what. Nothing of value comes to you without fucking working at it. The graphic designer’s first fucking consideration is always the size and shape of the format, whether for the printed page or for digital display. This design is fucking brilliant. Why are you fucking"], ["updated_at", "2016-01-30 18:12:35.210495"], ["id", 1]]
+  [1m[35m (5.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 17ms (ActiveRecord: 12.4ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:12:35 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.4ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (8.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (3.4ms)
+Completed 200 OK in 62ms (Views: 60.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:12:40 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (5.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:41 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (5.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 45ms (Views: 43.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:47 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:48 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:48 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:48 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:12:48 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:12:48 +0200
+
+
+Started GET "/jokes/1/edit" for 127.0.0.1 at 2016-01-30 20:12:54 +0200
+Processing by JokesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/edit.html.haml within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/jokes/1" for 127.0.0.1 at 2016-01-30 20:13:17 +0200
+Processing by JokesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t5X9oVBagkzVislTO56p5HueaSUno7xwH5Ye9dh2ajiV6Qe86DuOwYtC9LsP5XqIR90spunxpCPjyvuGjGvuCQ==", "joke"=>{"content"=>"You want to hear a pizza joke? Never mind, it’s pretty cheesy."}, "commit"=>"Edit", "id"=>"1"}
+  [1m[35mJoke Load (0.2ms)[0m  SELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.3ms)[0m  SELECT  1 AS one FROM "jokes" WHERE ("jokes"."content" = 'You want to hear a pizza joke? Never mind, it’s pretty cheesy.' AND "jokes"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "jokes" SET "content" = $1, "updated_at" = $2 WHERE "jokes"."id" = $3[0m  [["content", "You want to hear a pizza joke? Never mind, it’s pretty cheesy."], ["updated_at", "2016-01-30 18:13:17.444743"], ["id", 1]]
+  [1m[35m (6.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 11ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:13:17 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (2.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.2ms)
+Completed 200 OK in 46ms (Views: 45.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:13:27 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (2.3ms)
+  Rendered shared/_menu.html.haml (0.6ms)
+Completed 200 OK in 48ms (Views: 46.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 20:13:51 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CjeGrjHHxg/yB8RokjqcOYtvC2+jKokfO04tY+JKg4woS3yziabKgqzP+YCmQU9VtyxO7G14kUzHEsgQtlcHvQ==", "joke"=>{"content"=>"Learn sign language, it’s very handy.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.3ms)[0m  SELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'Learn sign language, it’s very handy.' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "jokes" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Learn sign language, it’s very handy."], ["user_id", 1], ["created_at", "2016-01-30 18:13:51.572568"], ["updated_at", "2016-01-30 18:13:51.572568"]]
+  [1m[35m (6.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 10ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:13:51 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered jokes/index.html.haml within layouts/application (3.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 51ms (Views: 50.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:14:01 +0200
+Processing by JokesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (2.3ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 20:14:03 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y6auc50xa3+Rs++prfsY2yMtJpLE4H3G0ob+K2d6cQPp2lRuJVBn8s970kGZgMu3H25jEQqyZZUu2htYM2f1Mg==", "joke"=>{"content"=>"How does NASA organize their company parties? They planet.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mJoke Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'How does NASA organize their company parties? They planet.' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "jokes" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "How does NASA organize their company parties? They planet."], ["user_id", 1], ["created_at", "2016-01-30 18:14:03.151158"], ["updated_at", "2016-01-30 18:14:03.151158"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/jokes
+Completed 302 Found in 9ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:14:03 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.3ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered jokes/index.html.haml within layouts/application (3.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.8ms)
+Completed 200 OK in 44ms (Views: 42.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:14:10 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT "jokes".* FROM "jokes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered jokes/index.html.haml within layouts/application (4.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 46ms (Views: 44.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:14:11 +0200
+  [1m[36mJoke Load (1.1ms)[0m  [1mSELECT  "jokes".* FROM "jokes"  ORDER BY "jokes"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mJoke Load (0.5ms)[0m  SELECT  "jokes".* FROM "jokes"  ORDER BY "jokes"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:19:53 +0200
+
+SyntaxError (/Users/florinionce/Documents/personal projects/haigeorgecapoti_bot/app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+  has_many: jokes
+           ^):
+  app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+  config/routes.rb:2:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /Users/florinionce/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.3ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.8ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (125.6ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (4.5ms)
+Completed 200 OK in 222ms (Views: 203.3ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:28:06 +0200
+
+
+Started GET "/jokes/2" for 127.0.0.1 at 2016-01-30 20:28:55 +0200
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mJoke Load (0.2ms)[0m  [1mSELECT  "jokes".* FROM "jokes" WHERE "jokes"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/show.html.haml within layouts/application (21.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.6ms)
+Completed 200 OK in 100ms (Views: 86.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:29:04 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.4ms)[0m  SELECT "jokes".* FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (10.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 60ms (Views: 58.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:32:39 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.7ms)[0m  SELECT  "jokes".* FROM "jokes" LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (60.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (12.0ms)
+Completed 200 OK in 471ms (Views: 448.6ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:40 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:32:49 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (36.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 84ms (Views: 77.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:32:50 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (6.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 54ms (Views: 51.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:04 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:33:07 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (4.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.8ms)
+Completed 200 OK in 46ms (Views: 43.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:08 +0200
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (8.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.8ms)
+Completed 200 OK in 54ms (Views: 51.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:15 +0200
+
+
+Started GET "/jokes?page=2" for 127.0.0.1 at 2016-01-30 20:33:23 +0200
+Processing by JokesController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (7.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (6.2ms)
+Completed 200 OK in 55ms (Views: 53.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/jokes?page=3" for 127.0.0.1 at 2016-01-30 20:33:24 +0200
+Processing by JokesController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 2[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (4.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.7ms)
+Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/jokes?page=1" for 127.0.0.1 at 2016-01-30 20:33:26 +0200
+Processing by JokesController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 1 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "jokes"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (4.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.8ms)
+Completed 200 OK in 56ms (Views: 54.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/jokes?page=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+Processing by JokesController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (24.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.0ms)
+Completed 200 OK in 75ms (Views: 68.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/jquery.self-4c7649dd655c61cb850cfd2e71f937c3bbf3e3a752a3499ed8bb9884473fe1dd.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/jquery_ujs.self-6ab23e892e77da88e18858a9137d4243a9f157d7c8457bfd489a4f931e6df840.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/turbolinks.self-b4cb65f20a705cd6b0800a76ad18f9582fa65d4484a04784e70b6a14ea06b96e.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/jokes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/widgets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/jokes.self-88259ad6b337aeebd227697ec9790171276fdc1ba9c509bd4f4c549d5b6f7bf1.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/theme.self-05cd22ada4ddaca43f7af271422a15f17125c62cf8000164d8e49c4cb4f68e36.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/application.self-085480d00fe6901c14fa607c246997e8a442b7fdd8a1d07244603263bb21a6a6.js?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/widgets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/assets/application.self-ad0e4cacc0a609a5bd5f8af568d2b25414a95da223a63710d6cdc6bc7b02a226.css?body=1" for 127.0.0.1 at 2016-01-30 20:33:58 +0200
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:34:14 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (15.0ms)
+  Rendered shared/_menu.html.haml (0.5ms)
+Completed 200 OK in 60ms (Views: 57.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 20:34:18 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zoxcWhJPfCP+Uk8xkIErpccQ2pfiGsTchPr2OME/Pgns8KZHqi5wrqCactmk+vjJ+1OfFCxI3I94phNLlSK6OA==", "joke"=>{"content"=>"Learn sign language, it’s very handy.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.8ms)[0m  SELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'Learn sign language, it’s very handy.' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/jokes/new
+Completed 302 Found in 23ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:34:18 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (3.8ms)
+  Rendered shared/_menu.html.haml (0.5ms)
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-30 20:34:23 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.haml within layouts/application (3.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 47ms (Views: 45.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:34:25 +0200
+Processing by JokesController#index as HTML
+  [1m[35mJoke Load (0.4ms)[0m  SELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (7.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:34:45 +0200
+Processing by JokesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (2.4ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 104ms (Views: 103.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:34:45 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (2.2ms)
+  Rendered shared/_menu.html.haml (8.9ms)
+Completed 200 OK in 49ms (Views: 48.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self-0ba3abeff21aaa9506b3bba2512f15084937d10fd64fd46492cd4eee3bfe471b.js?body=1" for 127.0.0.1 at 2016-01-30 20:34:45 +0200
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 20:34:49 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4T62dRT7vIBA/lebpqsLTYxFrBbvD+sAJBqZQ2uCJX3DQkxorJqwDR42anOS0NghsAbplSFd81PYRnwwP5+hTA==", "joke"=>{"content"=>"Learn sign language, it’s very handy.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.4ms)[0m  SELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'Learn sign language, it’s very handy.' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/jokes/new
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:34:49 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (3.4ms)
+  Rendered shared/_menu.html.haml (0.7ms)
+Completed 200 OK in 43ms (Views: 42.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:34:57 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.3ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (4.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (1.9ms)
+Completed 200 OK in 47ms (Views: 45.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:35:12 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (11.5ms)
+  Rendered shared/_menu.html.haml (0.6ms)
+Completed 200 OK in 72ms (Views: 62.4ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/jokes" for 127.0.0.1 at 2016-01-30 20:35:17 +0200
+Processing by JokesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y9A4Kt21gPl7ssX/lBzVQ4iB21+3K2z1r6HaWnJMgiRBrMI3ZdSMdCV6+BegZwYvtMKe3Hl5dKZT/T8pJlEGFQ==", "joke"=>{"content"=>"Learn sign language, it’s very handy.", "user_id"=>"1"}, "commit"=>"Create"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mJoke Exists (0.2ms)[0m  SELECT  1 AS one FROM "jokes" WHERE "jokes"."content" = 'Learn sign language, it’s very handy.' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/jokes/new
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/jokes/new" for 127.0.0.1 at 2016-01-30 20:35:17 +0200
+Processing by JokesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered jokes/new.html.haml within layouts/application (2.4ms)
+  Rendered shared/_menu.html.haml (0.6ms)
+Completed 200 OK in 45ms (Views: 44.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/jokes" for 127.0.0.1 at 2016-01-30 20:35:24 +0200
+Processing by JokesController#index as HTML
+  [1m[36mJoke Load (0.4ms)[0m  [1mSELECT  "jokes".* FROM "jokes" LIMIT 20 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered jokes/index.html.haml within layouts/application (6.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_menu.html.haml (2.1ms)
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.9ms)
