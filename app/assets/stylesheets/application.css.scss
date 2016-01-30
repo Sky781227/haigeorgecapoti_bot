@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ 
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+  .flash.notice {
+    background-color: greenyellow;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
+  }
+
+  .flash.error {
+    background-color: red;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
+  }

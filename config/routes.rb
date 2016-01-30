@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  post "start-bot" => "welcome#start_bot"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

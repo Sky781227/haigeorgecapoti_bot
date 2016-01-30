@@ -1,0 +1,27 @@
+.navbar.navbar-default
+  .container
+    %nav.collapse.navbar-collapse.bs-navbar-collapse
+      %ul.nav.navbar-nav
+        - if user_signed_in?
+          %li
+            = link_to "#" do
+              Welcome
+              = current_user.first_name
+        - else user_signed_in?
+          %li
+            = link_to('Login', new_user_session_path)
+          %li
+            =  link_to 'Sign Up',  new_user_registration_path
+      %ul.nav.navbar-nav.navbar-right
+
+        %li
+          - if user_signed_in?
+            %li
+              = link_to 'Users', "#"
+            %li
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+
+.container
+  .col-md-offset-1
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "flash #{key}"

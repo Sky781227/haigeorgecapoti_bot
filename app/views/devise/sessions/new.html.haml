@@ -1,0 +1,21 @@
+.container
+  %h2
+    Login
+
+  .col-xs-5
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = devise_error_messages!
+
+      .field.form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: "form-control"
+
+      .field.form-group
+        = f.label :password
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+
+      .actions
+        = f.submit "Login", class: "btn btn-default"
+
+
+    = render "devise/shared/links"
