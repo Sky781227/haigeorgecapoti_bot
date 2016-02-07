@@ -1,0 +1,9 @@
+.container
+  .col-md-6
+    = form_for(@food) do |f|
+      .field.form-group
+        = f.text_field :name, placeholder: 'Name', class: "form-control", required: true
+      .field.form-group
+        = f.text_field :url, placeholder: 'Url to recipe', class: "form-control", required: true
+      .actions
+        = f.submit "Edit", class: "btn btn-default"
